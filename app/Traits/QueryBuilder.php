@@ -42,17 +42,17 @@ trait QueryBuilder
         if($model->logic_type=="after")
         {
             if($key==0){
-                return $query->whereDate($model->field_name,"<",date('Y-m-d',strtotime($model->value)));
+                return $query->whereDate($model->field_name,">",date('Y-m-d',strtotime($model->value)));
             }else{
-                return $query->orWhereDate($model->field_name,"<",date('Y-m-d',strtotime($model->value)));
+                return $query->orWhereDate($model->field_name,">",date('Y-m-d',strtotime($model->value)));
             }
         }
         if($model->logic_type=="before")
         {
             if($key==0){
-                return $query->whereDate($model->field_name,">",date('Y-m-d',strtotime($model->value)));
+                return $query->whereDate($model->field_name,"<",date('Y-m-d',strtotime($model->value)));
             }else{
-                return $query->orWhereDate($model->field_name,">",date('Y-m-d',strtotime($model->value)));
+                return $query->orWhereDate($model->field_name,"<",date('Y-m-d',strtotime($model->value)));
             }
         }
         if($model->logic_type=="on")
@@ -66,17 +66,17 @@ trait QueryBuilder
         if($model->logic_type=="on_or_before")
         {
             if($key==0){
-                return $query->whereDate($model->field_name,">=",date('Y-m-d',strtotime($model->value)));
+                return $query->whereDate($model->field_name,"<=",date('Y-m-d',strtotime($model->value)));
             }else{
-                return $query->orWhereDate($model->field_name,">=",date('Y-m-d',strtotime($model->value)));
+                return $query->orWhereDate($model->field_name,"<=",date('Y-m-d',strtotime($model->value)));
             }
         }
         if($model->logic_type=="on_or_after")
         {
             if($key==0){
-                return $query->whereDate($model->field_name,"<=",date('Y-m-d',strtotime($model->value)));
+                return $query->whereDate($model->field_name,">=",date('Y-m-d',strtotime($model->value)));
             }else{
-                return $query->orWhereDate($model->field_name,"<=",date('Y-m-d',strtotime($model->value)));
+                return $query->orWhereDate($model->field_name,">=",date('Y-m-d',strtotime($model->value)));
             }
         }
         if($model->logic_type=="is")
